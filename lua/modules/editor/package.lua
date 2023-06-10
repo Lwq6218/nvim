@@ -95,7 +95,6 @@ package({
   cmd = { 'NvimTreeToggle' },
   config = conf.nvim_tree,
 })
-
 --FIX: config has bug to fix
 package({
   'nvim-lualine/lualine.nvim',

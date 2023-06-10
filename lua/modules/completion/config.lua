@@ -69,7 +69,7 @@ function config.nvim_cmp()
           -- copilot = "[CPLT]",
           cmdline = '[CMD]',
           buffer = '[BUF]',
-          orgmode = '[ORG]',
+          -- orgmode = '[ORG]',
           nvim_lsp = '[LSP]',
           -- nvim_lua = "[LUA]",
           path = '[PATH]',

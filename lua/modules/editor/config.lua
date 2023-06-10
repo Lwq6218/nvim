@@ -24,7 +24,7 @@ end
 function config.bufferline()
   local icons = { ui = require('utils.icons').get('ui') }
 
-  local opts = {
+  require('bufferline').setup({
     options = {
       number = nil,
       modified_icon = icons.ui.Modified,
@@ -53,21 +53,13 @@ function config.bufferline()
           text = 'File Explorer',
           text_align = 'center',
           padding = 1,
-        },
-        {
-          filetype = 'lspsagaoutline',
-          text = 'Lspsaga Outline',
-          text_align = 'center',
-          padding = 1,
+          highlight = 'Directory',
         },
       },
     },
-    -- Change bufferline's highlights here! See `:h bufferline-highlights` for detailed explanation.
-    -- Note: If you use catppuccin then modify the colors below!
-    highlights = {},
-  }
-  require('bufferline').setup(opts)
+  })
 end
+
 function config.nvim_tree()
   local icons = {
     diagnostics = require('utils.icons').get('diagnostics'),
@@ -78,7 +70,7 @@ function config.nvim_tree()
   require('nvim-tree').setup({
     auto_reload_on_write = true,
     create_in_closed_folder = false,
-    disable_netrw = false,
+    disable_netrw = true,
     hijack_cursor = true,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = true,
@@ -152,8 +144,6 @@ function config.nvim_tree()
           folder = {
             arrow_open = icons.ui.ArrowOpen,
             arrow_closed = icons.ui.ArrowClosed,
-            -- arrow_open = "",
-            -- arrow_closed = "",
             default = icons.ui.Folder,
             open = icons.ui.FolderOpen,
             empty = icons.ui.EmptyFolder,
@@ -185,7 +175,7 @@ function config.nvim_tree()
         global = false,
       },
       open_file = {
-        quit_on_open = false,
+        quit_on_open = true,
         resize_window = false,
         window_picker = {
           enable = true,
