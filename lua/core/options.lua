@@ -52,6 +52,6 @@ opt.list = true -- Show some invisible characters (tabs...
 opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
 opt.splitkeep = 'screen'
 opt.shortmess:append({ C = true })
-
+opt.fillchars = 'eob: '
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

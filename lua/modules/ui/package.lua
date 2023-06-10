@@ -51,6 +51,7 @@ package({
     end,
   },
 })
+
 package({
   'folke/noice.nvim',
   event = 'VeryLazy',

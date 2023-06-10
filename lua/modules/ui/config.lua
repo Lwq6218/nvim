@@ -20,8 +20,14 @@ function config.rose_pine()
       diffAdded = { fg = 'pine' },
       diffRemoved = { fg = 'love' },
       diffChanged = { fg = 'iris' },
-      PmenuSel = { bg = 'pine', fg = 'base' },
 
+      NormalFloat = { fg = 'text', bg = 'none' },
+      FloatBorder = {
+        fg = 'text',
+        bg = 'none',
+      },
+      --cmp
+      PmenuSel = { bg = 'pine', fg = 'base' },
       Pmenu = { fg = 'overlay2', bg = transparent_background and 'none' or 'base' },
       PmenuBorder = {
         fg = 'surface1',
@@ -62,21 +68,7 @@ function config.catppuccin()
       variables = {},
     },
     integrations = {
-      native_lsp = {
-        enabled = true,
-        virtual_text = {
-          errors = { 'italic' },
-          hints = { 'italic' },
-          warnings = { 'italic' },
-          information = { 'italic' },
-        },
-        underlines = {
-          errors = { 'underline' },
-          hints = { 'underline' },
-          warnings = { 'underline' },
-          information = { 'underline' },
-        },
-      },
+      native_lsp = { enabled = true },
       treesitter = true,
       alpha = true,
       cmp = true,
@@ -84,7 +76,7 @@ function config.catppuccin()
       indent_blankline = { enabled = true, colored_indent_levels = false },
       mason = true,
       mini = true,
-      neotree = true,
+      neotree = false,
       noice = true,
       ts_rainbow = true,
     },
