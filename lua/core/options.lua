@@ -30,6 +30,7 @@ opt.signcolumn = 'yes' -- Always show the signcolumn, otherwise it would shift t
 opt.smartcase = true -- Don't ignore case with capitals
 opt.smartindent = true -- Insert indents automatically
 opt.spelllang = { 'en' }
+opt.spell = false
 opt.splitbelow = true -- Put new windows below current
 opt.splitright = true -- Put new windows right of current
 opt.tabstop = 2 -- Number of spaces tabs count for
@@ -49,10 +50,8 @@ opt.showbreak = '↳ '
 opt.conceallevel = 0 -- Hide * markup for bold and italic
 opt.list = true -- Show some invisible characters (tabs...
 opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
-if vim.fn.has('nvim-0.9.0') == 1 then
-  opt.splitkeep = 'screen'
-  opt.shortmess:append({ C = true })
-end
+opt.splitkeep = 'screen'
+opt.shortmess:append({ C = true })
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

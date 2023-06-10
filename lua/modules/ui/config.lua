@@ -20,6 +20,15 @@ function config.rose_pine()
       diffAdded = { fg = 'pine' },
       diffRemoved = { fg = 'love' },
       diffChanged = { fg = 'iris' },
+      PmenuSel = { bg = 'pine', fg = 'base' },
+
+      Pmenu = { fg = 'overlay2', bg = transparent_background and 'none' or 'base' },
+      PmenuBorder = {
+        fg = 'surface1',
+        bg = transparent_background and 'none' or 'base',
+      },
+      CmpItemAbbr = { fg = 'overlay2' },
+      CmpItemAbbrMatch = { fg = 'gold' },
     },
   })
 end
@@ -81,7 +90,6 @@ function config.catppuccin()
     },
     color_overrides = {},
     highlight_overrides = {
-      ---@param cp palette
       all = function(cp)
         return {
           -- For base configs
@@ -249,7 +257,7 @@ function config.noice()
     },
     presets = {
       bottom_search = true, -- use a classic bottom cmdline for search
-      command_palette = false, -- position the cmdline and popupmenu together
+      command_palette = true, -- position the cmdline and popupmenu together
       long_message_to_split = true, -- long messages will be sent to a split
       inc_rename = false, -- enables an input dialog for inc-rename.nvim
       lsp_doc_border = true, -- add a border to hover docs and signature help

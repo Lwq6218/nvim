@@ -55,5 +55,6 @@ require('core.options')
 require('keymap')
 require('core.autocmds')
 
-vim.cmd('colorscheme catppuccin')
+vim.cmd('colorscheme rose-pine')
+-- vim.cmd('colorscheme catppuccin')
 -- vim.cmd('colorscheme nordic')

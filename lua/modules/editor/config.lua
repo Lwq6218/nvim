@@ -20,6 +20,7 @@ function config.nvim_treesitter()
     },
   })
 end
+
 function config.bufferline()
   local icons = { ui = require('utils.icons').get('ui') }
 
