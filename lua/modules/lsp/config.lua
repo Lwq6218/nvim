@@ -2,6 +2,7 @@ local config = {}
 local icons = {
   ui = require('utils.icons').get('ui', true),
   misc = require('utils.icons').get('misc', true),
+  diagnostics = require('utils.icons').get('diagnostics'),
 }
 local ensure_installed = {
   'lua_ls',
@@ -25,7 +26,7 @@ local opts = {
   },
   -- add any global capabilities here
   capabilities = {},
-  -- Automatically format on save
+  -- Aucolorschemetomatically format on save
   autoformat = true,
   -- Enable this to show formatters used in a notification
   -- Useful for debugging formatter issues
@@ -138,8 +139,8 @@ function config.nvim_lsp()
   if type(opts.diagnostics.virtual_text) == 'table' and opts.diagnostics.virtual_text.prefix == 'icons' then
     opts.diagnostics.virtual_text.prefix = vim.fn.has('nvim-0.10.0') == 0 and '●'
       or function(diagnostic)
-        local icons = require('utils.icons').get('diagnostics')
-        for d, icon in pairs(icons) do
+        local diagnostics = icons.diagnostics
+        for d, icon in pairs(diagnostics) do
           if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
             return icon
           end

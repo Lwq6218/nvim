@@ -54,7 +54,7 @@ require('core.pack'):boot_strap()
 require('core.options')
 require('keymap')
 require('core.autocmds')
-
-vim.cmd('colorscheme rose-pine')
+local colorscheme = require('core.options')['colorscheme']
+vim.cmd('colorscheme ' .. colorscheme)
 -- vim.cmd('colorscheme catppuccin')
 -- vim.cmd('colorscheme nordic')

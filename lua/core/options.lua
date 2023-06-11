@@ -1,5 +1,5 @@
+--nvim options
 local opt = vim.opt
-
 opt.cursorline = true -- Enable highlighting of the current line
 opt.cursorcolumn = true
 opt.cmdheight = 0
@@ -52,6 +52,11 @@ opt.list = true -- Show some invisible characters (tabs...
 opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
 opt.splitkeep = 'screen'
 opt.shortmess:append({ C = true })
-opt.fillchars = 'eob: '
+opt.fillchars = 'eob: ' --hide ~
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+--plugin options
+local opts = {}
+opts['colorscheme'] = 'catppuccin'
+return opts
