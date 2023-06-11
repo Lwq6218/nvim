@@ -58,3 +58,4 @@ local colorscheme = require('core.options')['colorscheme']
 vim.cmd('colorscheme ' .. colorscheme)
 -- vim.cmd('colorscheme catppuccin')
 -- vim.cmd('colorscheme nordic')
+require('vim.lsp._inlay_hint').refresh()
