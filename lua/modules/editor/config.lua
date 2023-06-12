@@ -12,8 +12,8 @@ function config.nvim_treesitter()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = '<C-space>',
-        node_incremental = '<C-space>',
+        init_selection = '<cr>',
+        node_incremental = '<cr>',
         scope_incremental = false,
         node_decremental = '<bs>',
       },
@@ -41,7 +41,7 @@ function config.bufferline()
       show_tab_indicators = true,
       enforce_regular_tabs = true,
       persist_buffer_sort = true,
-      always_show_bufferline = true,
+      always_show_bufferline = false,
       separator_style = 'thin',
       diagnostics = 'nvim_lsp',
       diagnostics_indicator = function(count)
@@ -81,7 +81,7 @@ function config.nvim_tree()
     view = {
       adaptive_size = false,
       centralize_selection = false,
-      width = 30,
+      width = 25,
       side = 'left',
       preserve_window_proportions = false,
       number = false,
