@@ -7,31 +7,6 @@ vim.api.nvim_create_autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
   group = augroup('checktime'),
   command = 'checktime',
 })
--- kitty ColorScheme
-vim.api.nvim_create_autocmd('ColorScheme', {
-  pattern = 'catppuccin',
-  callback = function()
-    if vim.o.background == 'light' then
-      vim.fn.system('kitty +kitten themes Catppuccin-Latte')
-    elseif vim.o.background == 'dark' then
-      vim.fn.system('kitty +kitten themes Catppuccin-Macha')
-    else
-      vim.fn.system('kitty +kitten themes Catppuccin')
-    end
-  end,
-})
-vim.api.nvim_create_autocmd('ColorScheme', {
-  pattern = 'rose-pine',
-  callback = function()
-    if vim.o.background == 'light' then
-      vim.fn.system('kitty +kitten themes Rose Pine Dawn')
-    elseif vim.o.background == 'dark' then
-      vim.fn.system('kitty +kitten themes Rose Pine Moon')
-    else
-      vim.fn.system('kitty +kitten themes Rose Pine')
-    end
-  end,
-})
 -- Highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
   group = augroup('highlight_yank'),

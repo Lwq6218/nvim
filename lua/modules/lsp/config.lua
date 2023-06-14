@@ -60,11 +60,11 @@ local opts = {
           codelens = {
             enable = true,
           },
-          hint = {
-            enable = true,
-            setType = true,
-            arrayIndex = 'Disable',
-          },
+          -- hint = {
+          --   enable = true,
+          --   setType = true,
+          --   arrayIndex = 'Disable',
+          -- },
           diagnostics = {
             globals = { 'vim' },
             disable = { 'different-requires' },
