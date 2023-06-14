@@ -216,12 +216,15 @@ function config.alpha()
       .. ms
       .. 'ms'
   end
+
+  dashboard.section.footer.val = footer()
   require('alpha').setup(dashboard.opts)
 
   vim.api.nvim_create_autocmd('User', {
     pattern = 'LazyVimStarted',
     callback = function()
       dashboard.section.footer.val = footer()
+      pcall(vim.cmd.AlphaRedraw)
     end,
   })
 end
