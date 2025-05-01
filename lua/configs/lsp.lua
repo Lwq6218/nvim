@@ -7,7 +7,7 @@ local t = {
   AWK = { "awk_ls" },
   Bash = { "bashls", "shellcheck", "shfmt" },
   ["BUILD.Bazel"] = { "starlark_rust" }, -- Bazel
-  bzl = { "starlark_rust" }, -- Bazel
+  bzl = { "starlark_rust" },             -- Bazel
   C = { "clangd", "clang-format" },
   Clojure = { "clojure_lsp", "zprint", "clj-kondo" },
   CMake = { "cmake" },
@@ -36,7 +36,7 @@ local t = {
   Flux = { "flux_lsp" },
   Fortran = { "fortls" },
   FSharp = { "fsautocomplete" }, -- F#
-  genie = { "vala_ls" }, -- Vala
+  genie = { "vala_ls" },         -- Vala
   Go = { "gopls", "goimports", "golangci_lint_ls" },
   GraphQL = { "graphql" },
   Groovy = { "groovyls", "gralde_ls" },
@@ -154,9 +154,10 @@ local servers = {
   ruff = {},
   -- React
   vtsls = {},
-  prettierd = {},
+  cssls = {},
+  jsonls = {},
   tailwindcss = {},
-  eslint_d = {},
+
   --Bash
   bashls = {
     filetypes = { "sh", "zsh", "bash" },
@@ -167,10 +168,6 @@ local servers = {
 }
 
 local ensure_installed = vim.tbl_keys(servers or {})
-vim.list_extend(ensure_installed, {
-  "stylua", -- Used to format Lua code
-  "shfmt",
-})
 
 ---@type lspconfig.Config
 local default_lspconfig_setup_options = {
@@ -178,10 +175,9 @@ local default_lspconfig_setup_options = {
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 }
-require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
 require("mason-lspconfig").setup {
-  ensure_installed = {},
+  ensure_installed = ensure_installed,
   automatic_installation = false,
   handlers = {
     ---@param server_name string

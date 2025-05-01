@@ -5,9 +5,24 @@ require "nvchad.options"
 local o = vim.opt
 --整行高亮
 o.cursorlineopt = "both"
+o.cmdheight = 0
+
 -- 显示特殊字符，比如尾随空格和 Tab
 o.list = true
 o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+if vim.g.neovide then
+  -- NEOVIDE CONFIGURATIONS
+  vim.o.guifont = "Maple Mono NF CN:h12"
+  vim.g.neovide_fullscreen = false
+  vim.g.neovide_refresh_rate = 120
+  vim.g.neovide_scale_factor = 1.0
+  vim.g.neovide_opacity = 0.8
+  vim.g.neovide_padding_top = 0
+  vim.g.neovide_padding_bottom = 0
+  vim.g.neovide_padding_right = 0
+  vim.g.neovide_padding_left = 0
+end
 
 vim.api.nvim_create_autocmd("QuitPre", {
   callback = function()
