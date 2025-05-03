@@ -210,15 +210,20 @@ local servers = {
   prettierd = {},
   eslint_d = {},
 
-  --Bash
+  -- Bash
   bashls = {
     filetypes = { "sh", "zsh", "bash" },
   },
   shfmt = {},
 
-  --Lua
+  -- Lua
   lua_ls = {},
   stylua = {},
+
+  -- Markdown
+  marksman = {},
+  ["markdownlint-cli2"] = {},
+  ["markdown-toc"] = {},
 }
 
 local ensure_installed = vim.tbl_keys(servers or {})
