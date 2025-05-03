@@ -6,19 +6,27 @@ M.treesitter = {
     "bash",
     "c",
     "diff",
-    "html",
-    "css",
+    -- Nvim
     "lua",
     "luadoc",
-    "markdown",
-    "markdown_inline",
     "query",
     "vim",
     "vimdoc",
+    -- Markdown
+    "markdown",
+    "markdown_inline",
+    -- React
+    "html",
+    "css",
     "json",
     "javascript",
     "typescript",
     "tsx",
+    -- Goland
+    "go",
+    "gomod",
+    "gowork",
+    "gosum"
   },
   -- Autoinstall languages that are not installed
   auto_install = true,

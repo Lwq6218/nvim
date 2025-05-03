@@ -6,7 +6,7 @@ local o = vim.opt
 --整行高亮
 o.cursorlineopt = "both"
 o.cmdheight = 0
-
+o.swapfile = false
 -- 显示特殊字符，比如尾随空格和 Tab
 o.list = true
 o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }

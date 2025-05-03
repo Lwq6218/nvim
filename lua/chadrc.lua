@@ -3,10 +3,9 @@
 -- Please read that file to know all available options :(
 
 local M = {}
-
 M.base46 = {
-  theme = "default-dark",
-
+  theme = "vscode_dark",
+  transparency = false,
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },

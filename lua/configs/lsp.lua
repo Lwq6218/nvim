@@ -7,7 +7,7 @@ local t = {
   AWK = { "awk_ls" },
   Bash = { "bashls", "shellcheck", "shfmt" },
   ["BUILD.Bazel"] = { "starlark_rust" }, -- Bazel
-  bzl = { "starlark_rust" },             -- Bazel
+  bzl = { "starlark_rust" }, -- Bazel
   C = { "clangd", "clang-format" },
   Clojure = { "clojure_lsp", "zprint", "clj-kondo" },
   CMake = { "cmake" },
@@ -36,7 +36,7 @@ local t = {
   Flux = { "flux_lsp" },
   Fortran = { "fortls" },
   FSharp = { "fsautocomplete" }, -- F#
-  genie = { "vala_ls" },         -- Vala
+  genie = { "vala_ls" }, -- Vala
   Go = { "gopls", "goimports", "golangci_lint_ls" },
   GraphQL = { "graphql" },
   Groovy = { "groovyls", "gralde_ls" },
@@ -138,18 +138,68 @@ local lspconfig = require "lspconfig"
 local nvlsp = require "nvchad.configs.lspconfig"
 
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- rust_analyzer = {},
   -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
   --
   -- Some languages (like typescript) have entire language plugins that can be useful:
   --    https://github.com/pmizio/typescript-tools.nvim
   --
   -- But for many setups, the LSP (`ts_ls`) will work just fine
-  -- ts_ls = {},
-  -- Python
 
+  -- GoLand
+  goimports = {},
+  gofumpt = {},
+  gomodifytags = {},
+  impl = {},
+  gopls = {
+    cmd = { "gopls", "-remote.debug=:0", "-remote=auto" },
+    filetypes = { "go", "gomod", "gosum", "gotmpl", "gohtmltmpl", "gotexttmpl" },
+    flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+    capabilities = {
+      textDocument = {
+        completion = {
+          contextSupport = true,
+          dynamicRegistration = true,
+          completionItem = {
+            commitCharactersSupport = true,
+            deprecatedSupport = true,
+            preselectSupport = true,
+            insertReplaceSupport = true,
+            labelDetailsSupport = true,
+            snippetSupport = true,
+            documentationFormat = { "markdown", "plaintext" },
+            resolveSupport = {
+              properties = {
+                "documentation",
+                "details",
+                "additionalTextEdits",
+              },
+            },
+          },
+        },
+      },
+    },
+    settings = {
+      gopls = {
+        staticcheck = true,
+        semanticTokens = true,
+        usePlaceholders = true,
+        completeUnimported = true,
+        symbolMatcher = "Fuzzy",
+        buildFlags = { "-tags", "integration" },
+        semanticTokenTypes = { string = false },
+        codelenses = {
+          generate = true,
+          gc_details = true,
+          test = true,
+          tidy = true,
+          vendor = true,
+          regenerate_cgo = true,
+          upgrade_dependency = true,
+        },
+      },
+    },
+  },
+  -- Python
   pyright = {},
   ruff = {},
   -- React
@@ -157,18 +207,22 @@ local servers = {
   cssls = {},
   jsonls = {},
   tailwindcss = {},
+  prettierd = {},
+  eslint_d = {},
 
   --Bash
   bashls = {
     filetypes = { "sh", "zsh", "bash" },
   },
+  shfmt = {},
 
   --Lua
   lua_ls = {},
+  stylua = {},
 }
 
 local ensure_installed = vim.tbl_keys(servers or {})
-
+require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 ---@type lspconfig.Config
 local default_lspconfig_setup_options = {
   on_attach = nvlsp.on_attach,
@@ -177,7 +231,7 @@ local default_lspconfig_setup_options = {
 }
 
 require("mason-lspconfig").setup {
-  ensure_installed = ensure_installed,
+  ensure_installed = {},
   automatic_installation = false,
   handlers = {
     ---@param server_name string

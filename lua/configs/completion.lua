@@ -9,4 +9,5 @@ local options = {
     ["<C-j>"] = cmp.mapping.select_next_item(),
   },
 }
+
 return vim.tbl_deep_extend("force", nv_options, options)

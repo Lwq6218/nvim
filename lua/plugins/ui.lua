@@ -12,9 +12,6 @@ return {
         ["<C-k>"] = require("telescope.actions").move_selection_previous,
         ["<Esc>"] = require("telescope.actions").close,
       }
-
-      -- or
-      -- table.insert(conf.defaults.mappings.i, your table)
       return conf
     end,
   },
@@ -31,9 +28,12 @@ return {
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
-      opt = {
-     background_colour = "NotifyBackground",
-      }
+      config = function()
+        require("notify").setup {
+          background_colour = "#000000",
+          fps = 120,
+        }
+      end,
     },
   },
 }
