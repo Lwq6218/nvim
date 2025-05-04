@@ -134,9 +134,6 @@ local t = {
   Zsh = { "bashls", "shellcheck" },
 }
 
-local lspconfig = require "lspconfig"
-local nvlsp = require "nvchad.configs.lspconfig"
-
 local servers = {
   -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
   --
@@ -226,7 +223,10 @@ local servers = {
   ["markdown-toc"] = {},
 }
 
+local lspconfig = require "lspconfig"
+local nvlsp = require "nvchad.configs.lspconfig"
 local ensure_installed = vim.tbl_keys(servers or {})
+
 require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 ---@type lspconfig.Config
 local default_lspconfig_setup_options = {
@@ -242,6 +242,7 @@ require("mason-lspconfig").setup {
     ---@param server_name string
     function(server_name)
       local server = servers[server_name] or {}
+      dofile(vim.g.base46_cache .. "lsp")
       ---@diagnostic disable-next-line: undefined-field
       lspconfig[server_name].setup(vim.tbl_deep_extend("force", default_lspconfig_setup_options, server))
     end,
