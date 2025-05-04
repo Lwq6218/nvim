@@ -1,10 +1,6 @@
 local M = {}
 
 M.noice = {
-  require("notify").setup {
-    background_colour = "#000000",
-    fps = 120,
-  },
   cmdline = {
     enabled = true,
     view = "cmdline_popup",
@@ -23,12 +19,6 @@ M.noice = {
     },
   },
   views = {
-    cmdline_popup = {
-      position = {
-        row = "40%",
-        col = "50%",
-      },
-    },
     popupmenu = {
       relative = "editor",
       position = {
@@ -68,6 +58,9 @@ M.noice = {
     },
   },
   lsp = {
+    progress = {
+      enabled = false,
+    },
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {
       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -87,11 +80,15 @@ M.noice = {
   health = {
     checker = true,
   },
-
+  messages = {
+    enabled = false,
+  },
   popupmenu = {
     enabled = true,
   },
-
+  notify = {
+    enalbed = false,
+  },
   signature = {
     enabled = false,
   },

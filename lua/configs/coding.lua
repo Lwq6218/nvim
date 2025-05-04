@@ -55,6 +55,11 @@ M.conform = {
 }
 
 M.lint = function()
+  linters = {
+    ["markdownlint-cli2"] = {
+      args = { "--config", "/.markdownlint-cli2.yaml", "--" },
+    },
+  }
   local lint = require "lint"
   lint.linters_by_ft = {
     markdown = { "markdownlint-cli2" },

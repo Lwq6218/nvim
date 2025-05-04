@@ -1,7 +1,7 @@
 return {
   {
     "folke/noice.nvim",
-    enabled = false,
+    enabled = true,
     event = "VeryLazy",
     opts = function()
       return require("configs.ui").noice
@@ -9,10 +9,11 @@ return {
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
     },
+  },
+  {
+    "typicode/bg.nvim",
+    lazy = false,
+    cond = not vim.g.neovide,
   },
 }

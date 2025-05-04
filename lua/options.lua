@@ -5,12 +5,13 @@ local opt = vim.opt
 opt.number = true -- Print line number
 opt.relativenumber = true -- Relative line numbers
 opt.autowrite = true -- Enable auto write
+opt.cursorlineopt = "both" -- Enable highlighting of the current line
+opt.cmdheight = 0
 -- only set clipboard if not in ssh, to make sure the OSC 52
 -- integration works automatically. Requires Neovim >= 0.10.0
 opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
-opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
 opt.foldlevel = 99
 opt.formatoptions = "jcroqlnt" -- tcqj
@@ -57,6 +58,22 @@ opt.fillchars = {
   diff = "╱",
   eob = " ",
 }
+
+-- Neovide
+if vim.g.neovide then
+  vim.opt.guifont = "Maple Mono NF CN:h10"
+  vim.opt.linespace = 0
+  -- -- NEOVIDE CONFIGURATIONS
+  -- vim.g.neovide_fullscreen = false
+  vim.g.floaterm_winblend = 0
+  vim.g.neovide_theme = "auto"
+  vim.g.neovide_opacity = 1
+  -- vim.g.neovide_padding_top = 10
+  -- vim.g.neovide_padding_bottom = 10
+  -- vim.g.neovide_padding_right = 10
+  -- vim.g.neovide_padding_left = 10
+end
+
 -- Wsl clipboard
 if vim.fn.has "wsl" == 1 then
   vim.g.clipboard = {
