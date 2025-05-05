@@ -1,25 +1,6 @@
 local M = {}
 
 M.conform = {
-  formatters = {
-    ["markdown-toc"] = {
-      condition = function(_, ctx)
-        for _, line in ipairs(vim.api.nvim_buf_get_lines(ctx.buf, 0, -1, false)) do
-          if line:find "<!%-%- toc %-%->" then
-            return true
-          end
-        end
-      end,
-    },
-    ["markdownlint-cli2"] = {
-      condition = function(_, ctx)
-        local diag = vim.tbl_filter(function(d)
-          return d.source == "markdownlint"
-        end, vim.diagnostic.get(ctx.buf))
-        return #diag > 0
-      end,
-    },
-  },
   formatters_by_ft = {
     bash = { "shellcheck", "shfmt" },
     sh = { "shellcheck", "shfmt" },
@@ -54,30 +35,30 @@ M.conform = {
   },
 }
 
-M.lint = function()
+M.lint = {
   linters = {
-    ["markdownlint-cli2"] = {
-      args = { "--config", "/.markdownlint-cli2.yaml", "--" },
-    },
-  }
-  local lint = require "lint"
-  lint.linters_by_ft = {
+    -- -- Example of using selene only when a selene.toml file is present
+    -- selene = {
+    --   -- `condition` is another LazyVim extension that allows you to
+    --   -- dynamically enable/disable linters based on the context.
+    --   condition = function(ctx)
+    --     return vim.fs.find({ "selene.toml" }, { path = ctx.filename, upward = true })[1]
+    --   end,
+    -- },
+  },
+  linters_by_ft = {
     markdown = { "markdownlint-cli2" },
     javascript = { "eslint_d" },
     javascriptreact = { "eslint_d" },
     typescript = { "eslint_d" },
     typescriptreact = { "eslint_d" },
-  }
-  local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-  vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-    group = lint_augroup,
-    callback = function()
-      if vim.opt_local.modifiable:get() then
-        lint.try_lint()
-      end
-    end,
-  })
-end
+    -- Use the "*" filetype to run linters on all filetypes.
+    -- ['*'] = { 'global linter' },
+    -- Use the "_" filetype to run linters on filetypes that don't have other linters configured.
+    -- ['_'] = { 'fallback linter' },
+    -- ["*"] = { "typos" },
+  },
+}
 M.render_markdown = {
   code = {
     sign = false,
@@ -92,4 +73,30 @@ M.render_markdown = {
     enabled = false,
   },
 }
+M.falsh = {
+
+  jump = {
+    autojump = true,
+  },
+  modes = {
+    char = {
+      autohide = true,
+    },
+  },
+  exclude = {
+    "notify",
+    "cmp_menu",
+    "noice",
+    "lazy",
+    "flash_prompt",
+    function(win)
+      -- exclude non-focusable windows
+      return not vim.api.nvim_win_get_config(win).focusable
+    end,
+  },
+  prompt = {
+    prefix = { { "", "FlashPromptIcon" } },
+  },
+}
+
 return M
