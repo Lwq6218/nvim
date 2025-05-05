@@ -101,6 +101,7 @@ M.ui = {
     },
   },
   tabufline = {
+    enabled = false,
     lazyload = false,
   },
 }

@@ -40,4 +40,5 @@ M.nvim_tree = {
     end,
   }),
 }
+M.incline = {}
 return M

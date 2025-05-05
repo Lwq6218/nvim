@@ -110,6 +110,126 @@ return {
     --   vim.g.loaded_netrwPlugin = 1
     -- end,
   },
+
+  {
+    "b0o/incline.nvim",
+    event = "VeryLazy",
+    enabled = true,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      local devicons = require "nvim-web-devicons"
+      require("incline").setup {
+        window = {
+          margin = {
+            horizontal = 2,
+            vertical = 2,
+          },
+          options = {
+            signcolumn = "no",
+            wrap = false,
+          },
+          overlap = {
+            borders = true,
+            statusline = false,
+            tabline = false,
+            winbar = false,
+          },
+          padding = 1,
+          padding_char = " ",
+          placement = {
+            horizontal = "right",
+            vertical = "top",
+          },
+          width = "fit",
+          winhighlight = {
+            active = {
+              EndOfBuffer = "None",
+              Normal = "InclineNormal",
+              Search = "None",
+            },
+            inactive = {
+              EndOfBuffer = "None",
+              Normal = "InclineNormalNC",
+              Search = "None",
+            },
+          },
+          zindex = 50,
+        },
+        render = function(props)
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          if filename == "" then
+            filename = "[No Name]"
+          end
+          local ft_icon, ft_color = devicons.get_icon_color(filename)
+
+          local function get_git_diff()
+            local icons = { removed = " ", changed = " ", added = " " }
+            local signs = vim.b[props.buf].gitsigns_status_dict
+            local labels = {}
+            if signs == nil then
+              return labels
+            end
+            for name, icon in pairs(icons) do
+              if tonumber(signs[name]) and signs[name] > 0 then
+                table.insert(labels, { icon .. signs[name] .. " ", group = "Diff" .. name })
+              end
+            end
+            if #labels > 0 then
+              table.insert(labels, { "| " })
+            end
+            return labels
+          end
+
+          local function get_diagnostic_label()
+            local icons = { error = "󰅙 ", warn = " ", info = " ", hint = "󰌵" }
+            local label = {}
+
+            for severity, icon in pairs(icons) do
+              local n = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
+              if n > 0 then
+                table.insert(label, { icon .. n .. " ", group = "DiagnosticSign" .. severity })
+              end
+            end
+            if #label > 0 then
+              table.insert(label, { "| " })
+            end
+            return label
+          end
+
+          return {
+            { get_diagnostic_label() },
+            { get_git_diff() },
+            { (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
+            { filename .. " ", gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
+            { "|  " .. vim.api.nvim_win_get_number(props.win), group = "DevIconWindows" },
+          }
+        end,
+      }
+    end,
+  },
+  { -- Breadcrumbs
+    "Bekaboo/dropbar.nvim",
+    enabled = true,
+    event = "LspAttach",
+    config = function()
+      require("dropbar").setup {
+        bar = {
+          sources = function(buf, _)
+            local sources = require "dropbar.sources"
+            local utils = require "dropbar.utils"
+            if vim.bo[buf].ft == "markdown" then
+              return { sources.markdown }
+            end
+            if vim.bo[buf].buftype == "terminal" then
+              return { sources.terminal }
+            end
+            return { utils.source.fallback { sources.lsp, sources.treesitter } }
+          end,
+        },
+      }
+    end,
+  },
+
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -157,21 +277,27 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
       bigfile = { enabled = true },
       dashboard = { enabled = false },
       explorer = { enabled = false },
       indent = { enabled = false },
       input = { enabled = true },
       picker = { enabled = false },
-      notifier = { enabled = true, reflesh = 120 },
+      notifier = { enabled = true, reflesh = 120, margin = { top = 5, right = 2, bottom = 0 } },
       quickfile = { enabled = true },
       scope = { enabled = false },
       scroll = { enabled = false },
       statuscolumn = { enabled = false },
       words = { enabled = true },
+    },
+    keys = {
+      {
+        "<leader>lg",
+        function()
+          require("snacks").lazygit()
+        end,
+        desc = "Lazygit",
+      },
     },
     init = function()
       ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>

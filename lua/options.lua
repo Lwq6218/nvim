@@ -72,6 +72,14 @@ if vim.g.neovide then
   -- vim.g.neovide_padding_bottom = 10
   -- vim.g.neovide_padding_right = 10
   -- vim.g.neovide_padding_left = 10
+  vim.api.nvim_create_autocmd("BufDelete", {
+    callback = function()
+      local bufs = vim.t.bufs
+      if #bufs == 1 and vim.api.nvim_buf_get_name(bufs[1]) == "" then
+        vim.cmd "Nvdash"
+      end
+    end,
+  })
 end
 
 -- Wsl clipboard
