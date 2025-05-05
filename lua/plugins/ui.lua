@@ -1,8 +1,9 @@
 return {
+  { "lukas-reineke/indent-blankline.nvim", enabled = false },
   {
     "folke/noice.nvim",
+    lazy = true,
     enabled = true,
-    event = "VeryLazy",
     keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
     opts = function()
       return require("configs.ui").noice

@@ -222,7 +222,6 @@ local servers = {
   ["markdownlint-cli2"] = {},
   ["markdown-toc"] = {},
 }
-
 local lspconfig = require "lspconfig"
 local nvlsp = require "nvchad.configs.lspconfig"
 local ensure_installed = vim.tbl_keys(servers or {})
@@ -241,8 +240,9 @@ require("mason-lspconfig").setup {
   handlers = {
     ---@param server_name string
     function(server_name)
-      local server = servers[server_name] or {}
       dofile(vim.g.base46_cache .. "lsp")
+      require("nvchad.lsp").diagnostic_config()
+      local server = servers[server_name] or {}
       ---@diagnostic disable-next-line: undefined-field
       lspconfig[server_name].setup(vim.tbl_deep_extend("force", default_lspconfig_setup_options, server))
     end,

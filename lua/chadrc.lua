@@ -55,6 +55,7 @@ M.nvdash = {
 }
 M.ui = {
   telescope = { style = "bordered" }, -- borderless / bordered
+
   cmp = {
     lspkind_text = true,
     style = "default", -- default/flat_light/flat_dark/atom/atom_colored
@@ -62,9 +63,10 @@ M.ui = {
       lsp = true,
     },
   },
+
   statusline = {
-    theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
-    separator_style = "round",
+    theme = "default", -- default/vscode/vscode_colored/minimal
+    separator_style = "block",
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
     order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "encoding", "eol", "lsp", "cwd", "cursor" },
@@ -100,6 +102,7 @@ M.ui = {
       end,
     },
   },
+
   tabufline = {
     enabled = false,
     lazyload = false,

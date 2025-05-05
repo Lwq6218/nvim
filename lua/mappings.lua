@@ -2,6 +2,7 @@ require "nvchad.mappings"
 
 -- add yours here
 local map = vim.keymap.set
+local nomap = vim.keymap.del
 
 map("i", "jk", "<ESC>")
 map("i", "jk", "<esc>", { noremap = true, silent = true })
