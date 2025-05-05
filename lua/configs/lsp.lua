@@ -224,12 +224,17 @@ local servers = {
 }
 local lspconfig = require "lspconfig"
 local nvlsp = require "nvchad.configs.lspconfig"
+local ooo = function(client, bufnr)
+  nvlsp.on_attach(client, bufnr)
+  -- map HERE
+  vim.keymap.set("n", "gd", "<cmd> Telescope<cr>", { buffer = bufnr })
+end
 local ensure_installed = vim.tbl_keys(servers or {})
 
 require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 ---@type lspconfig.Config
 local default_lspconfig_setup_options = {
-  on_attach = nvlsp.on_attach,
+  on_attach = ooo,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 }

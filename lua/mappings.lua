@@ -1,9 +1,11 @@
 require "nvchad.mappings"
 
--- add yours here
 local map = vim.keymap.set
 local nomap = vim.keymap.del
-
+-- Disable Nvchad keymap
+nomap("n", "<leader>x")
+nomap("n", "<leader>e")
+-- Add keymap
 map("i", "jk", "<ESC>")
 map("i", "jk", "<esc>", { noremap = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, desc = "Move cursor down" })
@@ -14,8 +16,6 @@ map("n", "H", "^", { noremap = true, desc = "Go to end of line" })
 map("n", "L", "$", { noremap = true, desc = "Go to begin of line" })
 map("n", "\\", "<CMD>:sp<CR>", { desc = "Split window horizontally" })
 map("n", "|", "<CMD>:vsp<CR>", { desc = "Split window vertically" })
-map("n", "]q", "<cmd>cnext<cr>", { desc = "Go to next qf item" })
-map("n", "[q", "<cmd>cprev<cr>", { desc = "Go to prev qf item" })
 map("v", "p", '"_dP', { noremap = true })
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
