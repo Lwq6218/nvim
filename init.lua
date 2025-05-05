@@ -13,6 +13,7 @@ if vim.g.neovide then
   vim.g.neovide_padding_bottom = 0
   vim.g.neovide_padding_right = 0
   vim.g.neovide_padding_left = 0
+  vim.g.neovide_hide_mouse_when_typing = true
 end
 
 -- 自定义的 lazy.nvim 安装路径

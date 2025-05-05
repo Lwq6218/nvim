@@ -3,6 +3,7 @@
 -- Please read that file to know all available options :(
 
 local M = {}
+
 M.base46 = {
   theme = "catppuccin",
   transparency = false,
