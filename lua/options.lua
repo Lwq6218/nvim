@@ -58,20 +58,6 @@ opt.fillchars = {
   eob = " ",
 }
 
--- Neovide
-if vim.g.neovide then
-  vim.opt.guifont = "Maple Mono NF CN:h10.5"
-  vim.opt.linespace = 0
-  -- -- NEOVIDE CONFIGURATIONS
-  -- vim.g.neovide_fullscreen = false
-  vim.g.neovide_theme = "auto"
-  vim.g.neovide_opacity = 1
-  vim.g.neovide_padding_top = 0
-  vim.g.neovide_padding_bottom = 0
-  vim.g.neovide_padding_right = 0
-  vim.g.neovide_padding_left = 0
-end
-
 -- Wsl clipboard
 if vim.fn.has "wsl" == 1 then
   vim.g.clipboard = {
@@ -158,6 +144,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     local lcount = vim.api.nvim_buf_line_count(buf)
     if mark[1] > 0 and mark[1] <= lcount then
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
+      vim.cmd "normal! zz"
     end
   end,
 })

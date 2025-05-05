@@ -78,7 +78,7 @@ M.lint = function()
     end,
   })
 end
-M.markdown = {
+M.render_markdown = {
   code = {
     sign = false,
     width = "block",

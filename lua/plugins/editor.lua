@@ -107,7 +107,7 @@ return {
     },
     keys = {
       {
-        "<leader>-",
+        "<leader>e",
         mode = { "n", "v" },
         "<cmd>Yazi<cr>",
         desc = "Open yazi at the current file",
@@ -118,7 +118,7 @@ return {
         desc = "Open the file manager in nvim's working directory",
       },
       {
-        "<leader>e",
+        "<leader>-",
         "<cmd>Yazi toggle<cr>",
         desc = "Resume the last yazi session",
       },

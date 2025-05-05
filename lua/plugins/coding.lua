@@ -18,7 +18,7 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "norg", "rmd", "org", "codecompanion" },
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-    opts = require("configs.coding").markdown,
+    opts = require("configs.coding").render_markdown,
   },
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -30,6 +30,9 @@ return {
       library = {
         -- Load luvit types when the `vim.uv` word is found
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        { path = vim.fn.expand "$VIMRUNTIME/lua" },
+        { path = vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types" },
+        { path = vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy" },
       },
     },
   },
