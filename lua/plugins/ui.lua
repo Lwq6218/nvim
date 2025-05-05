@@ -3,6 +3,7 @@ return {
     "folke/noice.nvim",
     enabled = true,
     event = "VeryLazy",
+    keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
     opts = function()
       return require("configs.ui").noice
     end,
@@ -14,6 +15,7 @@ return {
   {
     "typicode/bg.nvim",
     lazy = false,
+    enabled = true,
     cond = not vim.g.neovide,
   },
 }

@@ -1,7 +1,6 @@
 local M = {}
 
 M.treesitter = {
-
   ensure_installed = {
     "bash",
     "c",
@@ -26,8 +25,20 @@ M.treesitter = {
     "go",
     "gomod",
     "gowork",
-    "gosum"
+    "gosum",
   },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<C-space>",
+      node_incremental = "<C-space>",
+      scope_incremental = false,
+      node_decremental = "<bs>",
+    },
+  },
+  disable = function(lang, bufnr)
+    return lang == "yaml" and vim.api.nvim_buf_line_count(bufnr) > 5000
+  end,
   -- Autoinstall languages that are not installed
   auto_install = true,
   highlight = {

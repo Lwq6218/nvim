@@ -7,6 +7,7 @@ opt.relativenumber = true -- Relative line numbers
 opt.autowrite = true -- Enable auto write
 opt.cursorlineopt = "both" -- Enable highlighting of the current line
 opt.cmdheight = 0
+
 -- only set clipboard if not in ssh, to make sure the OSC 52
 -- integration works automatically. Requires Neovim >= 0.10.0
 opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
@@ -61,25 +62,16 @@ opt.fillchars = {
 
 -- Neovide
 if vim.g.neovide then
-  vim.opt.guifont = "Maple Mono NF CN:h10"
+  vim.opt.guifont = "Maple Mono NF CN:h10.5"
   vim.opt.linespace = 0
   -- -- NEOVIDE CONFIGURATIONS
   -- vim.g.neovide_fullscreen = false
-  vim.g.floaterm_winblend = 0
   vim.g.neovide_theme = "auto"
   vim.g.neovide_opacity = 1
-  -- vim.g.neovide_padding_top = 10
-  -- vim.g.neovide_padding_bottom = 10
-  -- vim.g.neovide_padding_right = 10
-  -- vim.g.neovide_padding_left = 10
-  vim.api.nvim_create_autocmd("BufDelete", {
-    callback = function()
-      local bufs = vim.t.bufs
-      if #bufs == 1 and vim.api.nvim_buf_get_name(bufs[1]) == "" then
-        vim.cmd "Nvdash"
-      end
-    end,
-  })
+  vim.g.neovide_padding_top = 0
+  vim.g.neovide_padding_bottom = 0
+  vim.g.neovide_padding_right = 0
+  vim.g.neovide_padding_left = 0
 end
 
 -- Wsl clipboard
@@ -108,6 +100,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     (vim.hl or vim.highlight).on_yank()
   end,
 })
+
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup "close_with_q",
