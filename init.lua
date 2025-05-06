@@ -5,8 +5,7 @@ vim.g.mapleader = " "
 if vim.g.neovide then
   vim.opt.guifont = "Maple Mono NF CN:h10.5"
   vim.opt.linespace = 0
-  -- -- NEOVIDE CONFIGURATIONS
-  -- vim.g.neovide_fullscreen = false
+  vim.g.neovide_fullscreen = false
   vim.g.neovide_theme = "auto"
   vim.g.neovide_opacity = 1
   vim.g.neovide_padding_top = 0

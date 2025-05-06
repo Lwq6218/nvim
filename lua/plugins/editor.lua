@@ -47,21 +47,6 @@ return {
   },
 
   {
-    "nvim-tree/nvim-tree.lua",
-    lazy = false,
-    enabled = false,
-    keys = {
-      {
-        "<leader>e",
-        mode = { "n", "v" },
-        "<cmd>NvimTreeToggle<cr>",
-        desc = "Open NvimTRee at the current file",
-      },
-    },
-    opts = require("configs.editor").nvim_tree,
-  },
-
-  {
     "MagicDuck/grug-far.nvim",
     opts = { headerMaxWidth = 80 },
     cmd = "GrugFar",
@@ -82,17 +67,6 @@ return {
         desc = "Search and Replace",
       },
     },
-  },
-  {
-    "nvim-telescope/telescope.nvim",
-    opts = function(_, conf)
-      conf.defaults.mappings.i = {
-        ["<C-j>"] = require("telescope.actions").move_selection_next,
-        ["<C-k>"] = require("telescope.actions").move_selection_previous,
-        ["<Esc>"] = require("telescope.actions").close,
-      }
-      return conf
-    end,
   },
 
   {

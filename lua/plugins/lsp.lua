@@ -6,13 +6,4 @@ return {
       require "configs.lsp"
     end,
   },
-
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ui = {
-        border = "rounded",
-      },
-    },
-  },
 }

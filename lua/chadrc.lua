@@ -113,7 +113,7 @@ M.ui = {
 
   tabufline = {
     enabled = true,
-    lazyload = false,
+    lazyload = true,
   },
 }
 

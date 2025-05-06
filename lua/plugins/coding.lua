@@ -1,13 +1,5 @@
 return {
   {
-    "stevearc/conform.nvim",
-    event = { "BufWritePost", "BufReadPost", "InsertLeave" },
-    cmd = "ConformInfo",
-    opts = function()
-      return require("configs.coding").conform
-    end,
-  },
-  {
     "mfussenegger/nvim-lint",
     event = { "BufWritePost", "BufReadPost", "InsertLeave" },
     opts = require("configs.coding").lint,
@@ -86,22 +78,6 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     opts = require("configs.coding").render_markdown,
   },
-  -- {
-  --   -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-  --   -- used for completion, annotations and signatures of Neovim apis
-  --   "folke/lazydev.nvim",
-  --   ft = "lua",
-  --   cmd = "LazyDev",
-  --   opts = {
-  --     library = {
-  --       -- Load luvit types when the `vim.uv` word is found
-  --       { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-  --       { path = vim.fn.expand "$VIMRUNTIME/lua" },
-  --       { path = vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types" },
-  --       { path = vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy" },
-  --     },
-  --   },
-  -- },
 
   {
     "windwp/nvim-ts-autotag",
