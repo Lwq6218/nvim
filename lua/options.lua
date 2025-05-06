@@ -15,7 +15,6 @@ opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with 
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.expandtab = true -- Use spaces instead of tabs
 opt.foldlevel = 99
-opt.formatoptions = "jcroqlnt" -- tcqj
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 opt.ignorecase = true -- Ignore case
@@ -56,6 +55,21 @@ opt.fillchars = {
   foldsep = " ",
   diff = "╱",
   eob = " ",
+}
+vim.opt.formatoptions = {
+  ["1"] = true,
+  ["2"] = true, -- Use indent from 2nd line of a paragraph
+  q = true, -- continue comments with gq"
+  c = true, -- Auto-wrap comments using textwidth
+  r = true, -- Continue comments when pressing Enter
+  n = true, -- Recognize numbered lists
+  t = false, -- autowrap lines using text width value
+  j = true, -- remove a comment leader when joining lines.
+  -- Only break if the line was not longer than 'textwidth' when the insert
+  -- started and only at a white character that has been entered during the
+  -- current insert command.
+  l = true,
+  v = true,
 }
 
 -- Wsl clipboard

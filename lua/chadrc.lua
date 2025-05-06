@@ -108,6 +108,55 @@ M.ui = {
     enabled = false,
     lazyload = false,
   },
-}
+  colorify = {
+    enabled = true,
+    mode = "virtual", -- fg, bg, virtual
+    virt_text = "󱓻 ",
+    highlight = { hex = true, lspvars = true },
+  },
 
+  cheatsheet = {
+    theme = "grid", -- simple/grid
+    excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
+  },
+
+  mason = {
+    pkgs = {
+
+      -- GoLand
+      "goimports",
+      "gofumpt",
+      "gomodifytags",
+      "impl",
+      "gopls",
+
+      -- Lua
+      "lua_ls",
+      "stylua",
+
+      -- Bash
+      "bashls",
+      "shellcheck",
+      "shfmt",
+
+      -- Python
+      "pyright",
+      "ruff",
+
+      -- TypeScript
+      "vtsls",
+      "cssls",
+      "jsonls",
+      "tailwindcss",
+      "prettierd",
+      "eslint_d",
+
+      -- Markdown
+      "marksman",
+      "markdownlint-cli2",
+      "markdown-toc",
+    },
+    skip = {},
+  },
+}
 return M

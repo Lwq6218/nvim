@@ -109,7 +109,6 @@ local servers = {
   shfmt = {},
 
   -- Lua
-  lua_ls = {},
   stylua = {},
 
   -- Markdown
@@ -117,50 +116,20 @@ local servers = {
   ["markdownlint-cli2"] = {},
   ["markdown-toc"] = {},
 }
-local lspconfig = require "lspconfig"
+require("nvchad.configs.lspconfig").defaults()
 local nvlsp = require "nvchad.configs.lspconfig"
-local ooo = function(client, bufnr)
+local custom_on_attach = function(client, bufnr)
   nvlsp.on_attach(client, bufnr)
   -- map HERE
 end
 
-local ensure_installed = vim.tbl_keys(servers or {})
-require("mason-tool-installer").setup { ensure_installed = ensure_installed }
-
----@type lspconfig.Config
 local default_lspconfig_setup_options = {
-  on_attach = ooo,
+  on_attach = custom_on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 }
 
-require("mason-lspconfig").setup {
-  ensure_installed = {},
-  automatic_installation = false,
-  handlers = {
-    ---@param server_name string
-    function(server_name)
-      dofile(vim.g.base46_cache .. "lsp")
-      require("nvchad.lsp").diagnostic_config()
-      local server = servers[server_name] or {}
-      ---@diagnostic disable-next-line: undefined-field
-      lspconfig[server_name].setup(vim.tbl_deep_extend("force", default_lspconfig_setup_options, server))
-    end,
-    lua_ls = function()
-      dofile(vim.g.base46_cache .. "lsp")
-      require("nvchad.lsp").diagnostic_config()
-      local settings = {
-        Lua = {
-          completion = {
-            callSnippet = "Replace",
-          },
-          diagnostics = { disable = { "missing-fields" } },
-        },
-      }
-      ---@diagnostic disable-next-line: undefined-field
-      lspconfig.lua_ls.setup(vim.tbl_deep_extend("force", default_lspconfig_setup_options, {
-        settings = settings,
-      }))
-    end,
-  },
-}
+for name, opts in pairs(servers) do
+  vim.lsp.enable(name) -- nvim v0.11.0 or above required
+  vim.lsp.config(name, vim.tbl_deep_extend("force", default_lspconfig_setup_options, opts)) -- nvim v0.11.0 or above required
+end
