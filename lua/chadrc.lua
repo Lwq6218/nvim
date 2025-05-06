@@ -3,13 +3,18 @@
 -- Please read that file to know all available options :(
 
 local M = {}
-
 M.base46 = {
   theme = "catppuccin",
   transparency = false,
+  integrations = { "trouble", "flash" },
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
+  },
+  hl_add = {
+    -- 统一 Trouble.nvim 窗口背景
+    TroubleNormal = { bg = "black" }, -- 活动状态
+    TroubleNormalNC = { bg = "black" }, -- 非活动状态
   },
 }
 
@@ -54,6 +59,7 @@ M.nvdash = {
     { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
   },
 }
+
 M.ui = {
   telescope = { style = "bordered" }, -- borderless / bordered
 
@@ -108,55 +114,75 @@ M.ui = {
     enabled = false,
     lazyload = false,
   },
-  colorify = {
-    enabled = true,
-    mode = "virtual", -- fg, bg, virtual
-    virt_text = "󱓻 ",
-    highlight = { hex = true, lspvars = true },
+}
+
+M.colorify = {
+  enabled = true,
+  mode = "virtual", -- fg, bg, virtual
+  virt_text = "󱓻 ",
+  highlight = { hex = true, lspvars = true },
+}
+
+M.cheatsheet = {
+  theme = "grid", -- simple/grid
+  excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
+}
+
+M.term = {
+  base46_colors = true,
+  winopts = { number = false },
+  sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
+  float = {
+    relative = "editor",
+    row = 0.3,
+    col = 0.25,
+    width = 0.5,
+    height = 0.4,
+    border = "rounded",
   },
+}
+M.lsp = {
+  signature = true,
+}
 
-  cheatsheet = {
-    theme = "grid", -- simple/grid
-    excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
+M.mason = {
+  -- Use names from mason.nvim
+  -- For example, if you want to install "tsserver" you should use "typescript-language-server" in the list below
+  pkgs = {
+
+    -- GoLand
+    "goimports",
+    "gofumpt",
+    "gomodifytags",
+    "impl",
+    "gopls",
+
+    -- Lua
+    "lua-language-server",
+    "stylua",
+
+    -- Bash
+    "bash-language-server",
+    "shellcheck",
+    "shfmt",
+
+    -- Python
+    "pyright",
+    "ruff",
+
+    -- TypeScript
+    "vtsls",
+    "css-lsp",
+    "json-lsp",
+    "tailwindcss-language-server",
+    "prettierd",
+    "eslint_d",
+
+    -- Markdown
+    "marksman",
+    "markdownlint-cli2",
+    "markdown-toc",
   },
-
-  mason = {
-    pkgs = {
-
-      -- GoLand
-      "goimports",
-      "gofumpt",
-      "gomodifytags",
-      "impl",
-      "gopls",
-
-      -- Lua
-      "lua_ls",
-      "stylua",
-
-      -- Bash
-      "bashls",
-      "shellcheck",
-      "shfmt",
-
-      -- Python
-      "pyright",
-      "ruff",
-
-      -- TypeScript
-      "vtsls",
-      "cssls",
-      "jsonls",
-      "tailwindcss",
-      "prettierd",
-      "eslint_d",
-
-      -- Markdown
-      "marksman",
-      "markdownlint-cli2",
-      "markdown-toc",
-    },
-    skip = {},
-  },
+  skip = {},
 }
 return M

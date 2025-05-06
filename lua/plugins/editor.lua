@@ -3,13 +3,11 @@ return {
   {
     "folke/trouble.nvim",
     cmd = { "Trouble" },
-    opts = {
-      modes = {
-        lsp = {
-          win = { position = "right" },
-        },
-      },
-    },
+    opts = require("configs.editor").trouble,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "trouble")
+      require("trouble").setup(opts)
+    end,
     keys = {
       { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
       { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },

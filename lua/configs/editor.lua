@@ -87,4 +87,22 @@ M.snacks = {
   scroll = { enabled = false },
   statuscolumn = { enabled = false },
 }
+M.trouble = {
+  win_config = {
+    winblend = 0,
+  },
+  modes = {
+    lsp = {
+      win = { position = "left" },
+    },
+    symbols = {
+      win = {
+        type = "split", -- split window
+        relative = "win", -- relative to current window
+        position = "left", -- right side
+        size = 0.3, -- 30% of the window
+      },
+    },
+  },
+}
 return M

@@ -71,7 +71,6 @@ vim.opt.formatoptions = {
   l = true,
   v = true,
 }
-
 -- Wsl clipboard
 if vim.fn.has "wsl" == 1 then
   vim.g.clipboard = {
