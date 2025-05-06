@@ -5,6 +5,7 @@
 local M = {}
 M.base46 = {
   theme = "catppuccin",
+  theme_toggle = { "catppuccin", "github_light" },
   transparency = false,
   integrations = { "trouble", "flash" },
   hl_override = {
@@ -111,7 +112,7 @@ M.ui = {
   },
 
   tabufline = {
-    enabled = false,
+    enabled = true,
     lazyload = false,
   },
 }

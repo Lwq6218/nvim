@@ -41,4 +41,6 @@ map({ "n", "i", "v", "t" }, "<A-i>", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
 
-map("n", "ge", vim.diagnostic.open_float, { desc = "LSP show diagnostics" })
+map("n", "tg", function()
+  require("base46").toggle_theme()
+end, { desc = "toggle theme" })
