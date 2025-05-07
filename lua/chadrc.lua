@@ -1,7 +1,6 @@
 -- This file needs to have same structure as nvconfig.lua
 -- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
 -- Please read that file to know all available options :(
-
 local M = {}
 M.base46 = {
   theme = "catppuccin",
@@ -41,7 +40,7 @@ M.nvdash = {
     { txt = "  Find File", keys = "f", cmd = "Telescope find_files" },
     { txt = "  Recent Files", keys = "o", cmd = "Telescope oldfiles" },
     { txt = "  Find Text", keys = "g", cmd = "Telescope live_grep" },
-    { txt = "  Config", keys = "c", cmd = ":e $MYVIMRC" },
+    { txt = "  Config", keys = "c", cmd = " :cd ~/.config/nvim | e $MYVIMRC" },
     { txt = "  Mappings", keys = "m", cmd = "NvCheatsheet" },
     { txt = "󱥚  Themes", keys = "t", cmd = ":lua require('nvchad.themes').open()" },
     { txt = "󰒲  Lazy", keys = "l", cmd = "Lazy" },

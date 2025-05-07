@@ -3,6 +3,8 @@ require "nvchad.options"
 vim.g.markdown_recommended_style = 0
 
 local opt = vim.opt
+opt.signcolumn = "yes:2"
+opt.wrap = true
 opt.number = true -- Print line number
 opt.relativenumber = true -- Relative line numbers
 opt.cursorlineopt = "both" -- Enable highlighting of the current line

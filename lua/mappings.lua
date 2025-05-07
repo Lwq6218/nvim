@@ -1,10 +1,10 @@
-require "nvchad.mappings"
+-- require "nvchad.mappings"
 
 local map = vim.keymap.set
-local nomap = vim.keymap.del
+-- local nomap = vim.keymap.del
 -- Disable Nvchad keymap
-nomap("n", "<leader>x")
-nomap("n", "<leader>e")
+-- nomap("n", "<leader>x")
+-- nomap("n", "<leader>e")
 -- Add keymap
 map("i", "jk", "<ESC>")
 map("i", "jk", "<esc>", { noremap = true, silent = true })

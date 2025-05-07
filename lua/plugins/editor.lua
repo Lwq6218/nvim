@@ -78,7 +78,7 @@ return {
 
   {
     "mikavilpas/yazi.nvim",
-    event = "VeryLazy",
+    opts = require("configs.editor").yazi,
     dependencies = {
       "folke/snacks.nvim",
     },
@@ -100,12 +100,11 @@ return {
         desc = "Resume the last yazi session",
       },
     },
-    opts = require("configs.editor").yazi,
   },
 
   {
     "b0o/incline.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
     enabled = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
@@ -203,7 +202,7 @@ return {
   {
     "Bekaboo/dropbar.nvim",
     enabled = true,
-    event = "VeryLazy",
+    event = { "LspAttach" },
     config = function()
       require("dropbar").setup {
         bar = {

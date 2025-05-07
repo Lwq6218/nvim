@@ -100,6 +100,8 @@ return {
         },
         keymap = {
           ["<CR>"] = { "select_and_accept", "fallback" },
+          ["<C-j>"] = { "select_next", "fallback" },
+          ["<C-k>"] = { "select_prev", "fallback" },
         },
       },
 

@@ -109,6 +109,7 @@ local servers = {
   shfmt = {},
 
   -- Lua
+  lua_ls = {},
   stylua = {},
 
   -- Markdown
@@ -116,7 +117,8 @@ local servers = {
   ["markdownlint-cli2"] = {},
   ["markdown-toc"] = {},
 }
-require("nvchad.configs.lspconfig").defaults()
+dofile(vim.g.base46_cache .. "lsp")
+require("nvchad.lsp").diagnostic_config()
 local nvlsp = require "nvchad.configs.lspconfig"
 local custom_on_attach = function(client, bufnr)
   nvlsp.on_attach(client, bufnr)
