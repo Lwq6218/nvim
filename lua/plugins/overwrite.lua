@@ -1,11 +1,16 @@
--- Overwrite nvchad plugins
+-- overwrite nvchad plugins
 return {
   --disable nvchad plugins
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
-
+  {
+    "folke/which-key.nvim",
+    enabled = true,
+    opts = {
+      preset = "helix",
+    },
+  },
   {
     "nvim-tree/nvim-tree.lua",
-    lazy = false,
     enabled = false,
     keys = {
       {
@@ -31,31 +36,33 @@ return {
         -- hide_root_folder = true,
         adaptive_size = true,
       },
-      vim.api.nvim_create_autocmd("QuitPre", {
-        callback = function()
-          local tree_wins = {}
-          local floating_wins = {}
-          local wins = vim.api.nvim_list_wins()
-          for _, w in ipairs(wins) do
-            local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
-            if bufname:match "NvimTree_" ~= nil then
-              table.insert(tree_wins, w)
+      init = function()
+        vim.api.nvim_create_autocmd("QuitPre", {
+          callback = function()
+            local tree_wins = {}
+            local floating_wins = {}
+            local wins = vim.api.nvim_list_wins()
+            for _, w in ipairs(wins) do
+              local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
+              if bufname:match "NvimTree_" ~= nil then
+                table.insert(tree_wins, w)
+              end
+              if vim.api.nvim_win_get_config(w).relative ~= "" then
+                table.insert(floating_wins, w)
+              end
             end
-            if vim.api.nvim_win_get_config(w).relative ~= "" then
-              table.insert(floating_wins, w)
+            if 1 == #wins - #floating_wins - #tree_wins then
+              -- Should quit, so we close all invalid windows.
+              for _, w in ipairs(tree_wins) do
+                vim.api.nvim_win_close(w, true)
+              end
             end
-          end
-          if 1 == #wins - #floating_wins - #tree_wins then
-            -- Should quit, so we close all invalid windows.
-            for _, w in ipairs(tree_wins) do
-              vim.api.nvim_win_close(w, true)
-            end
-          end
-        end,
-      }),
+          end,
+        })
+      end,
     },
   },
-  -- change nvchad plugins
+  -- Change nvchad plugins
   {
     "nvim-telescope/telescope.nvim",
     opts = function(_, conf)
@@ -79,34 +86,11 @@ return {
         ["<C-k>"] = { "select_prev", "fallback" },
       },
       cmdline = {
-        -- completion = {
-        --   menu = {
-        --     auto_show = function(ctx)
-        --       return vim.fn.getcmdtype() == ":"
-        --       -- enable for inputs as well, with:
-        --       -- or vim.fn.getcmdtype() == '@'
-        --     end,
-        --   },
-        -- },
         keymap = {
           ["<CR>"] = { "accept", "fallback" },
           ["<C-j>"] = { "select_next", "fallback" },
           ["<C-k>"] = { "select_prev", "fallback" },
         },
-      },
-
-      sources = {
-        -- providers = {
-        --   cmdline = {
-        --     min_keyword_length = function(ctx)
-        --       -- when typing a command, only show when the keyword is 3 characters or longer
-        --       if ctx.mode == "cmdline" and string.find(ctx.line, " ") == nil then
-        --         return 3
-        --       end
-        --       return 0
-        --     end,
-        --   },
-        -- },
       },
     },
   },

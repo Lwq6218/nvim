@@ -3,15 +3,11 @@ local M = {}
 M.yazi = {
   -- if you want to open yazi instead of netrw, see below for more info
   open_for_directories = false,
-  floating_window_scaling_factor = 0.5,
+  floating_window_scaling_factor = 0.6,
   yazi_floating_window_winblend = 0,
-  use_ya_for_events_reading = false,
   -- highlight buffers in the same directory as the hovered buffer
-  highlight_hovered_buffers_in_same_directory = false,
   highlight_groups = {
-    -- See https://github.com/mikavilpas/yazi.nvim/pull/180
     hovered_buffer = nil,
-    -- See https://github.com/mikavilpas/yazi.nvim/pull/351
     hovered_buffer_in_same_directory = nil,
   },
   keymaps = {
@@ -26,12 +22,6 @@ M.yazi = {
     send_to_quickfix_list = "<c-q>",
     change_working_directory = "<c-\\>",
   },
-  -- 👇 if you use `open_for_directories=true`, this is recommended
-  -- init = function()
-  --   -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
-  --   -- vim.g.loaded_netrw = 1
-  --   vim.g.loaded_netrwPlugin = 1
-  -- end,
 }
 M.snacks = {
   notifier = { enabled = true, reflesh = 120, margin = { top = 5, right = 2, bottom = 0 } },
