@@ -4,9 +4,6 @@ require "nvchad.options"
 vim.g.markdown_recommended_style = 0
 
 local opt = vim.opt
-local o = vim.o
-
-o.winborder = "rounded"
 opt.signcolumn = "yes:2"
 opt.wrap = true
 opt.relativenumber = true
