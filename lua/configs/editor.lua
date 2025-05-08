@@ -10,6 +10,7 @@ M.yazi = {
     hovered_buffer = nil,
     hovered_buffer_in_same_directory = nil,
   },
+  yazi_floating_window_border = "rounded",
   keymaps = {
     show_help = "<f1>",
     open_file_in_vertical_split = "<c-v>",
@@ -29,8 +30,8 @@ M.snacks = {
   quickfile = { enabled = true },
   indent = { enabled = true },
   input = { enabled = true },
-  win = { enabled = true },
-  words = { enabled = true },
+  win = { enabled = false },
+  words = { enabled = false },
   dashboard = { enabled = false },
   explorer = { enabled = false },
   picker = { enabled = false },
@@ -40,6 +41,12 @@ M.snacks = {
   styles = {
     zen = {
       keys = { q = "close" },
+    },
+    notification = {
+      border = "rounded",
+    },
+    notification_history = {
+      border = "signle",
     },
   },
 }

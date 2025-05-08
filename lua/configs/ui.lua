@@ -7,7 +7,7 @@ M.noice = {
       views = {
         hover = {
           border = {
-            style = "single",
+            style = "rounded",
           },
         },
       },

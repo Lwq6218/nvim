@@ -7,8 +7,12 @@ return {
     enabled = true,
     opts = {
       preset = "helix",
+      win = {
+        border = "rounded",
+      },
     },
   },
+
   {
     "nvim-tree/nvim-tree.lua",
     enabled = false,
@@ -62,7 +66,18 @@ return {
       end,
     },
   },
+
   -- Change nvchad plugins
+  {
+    "mason-org/mason.nvim",
+    opts = {
+      ui = {
+        border = "rounded",
+        width = 0.7,
+        height = 0.7,
+      },
+    },
+  },
   {
     "nvim-telescope/telescope.nvim",
     opts = function(_, conf)
@@ -74,16 +89,24 @@ return {
       return conf
     end,
   },
-
   { import = "nvchad.blink.lazyspec" },
 
   {
     "saghen/blink.cmp",
     opts = {
-
+      completion = {
+        menu = {
+          border = "rounded",
+        },
+        documentation = {
+          window = { border = "rounded" },
+        },
+      },
       keymap = {
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
       },
       cmdline = {
         keymap = {
