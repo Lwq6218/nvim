@@ -14,6 +14,22 @@ if vim.g.neovide then
   vim.g.neovide_padding_left = 0
   vim.g.neovide_hide_mouse_when_typing = true
 end
+--
+-- Wsl clipboard
+if vim.fn.has "wsl" == 1 then
+  vim.g.clipboard = {
+    name = "WslClipboard",
+    copy = {
+      ["+"] = "clip.exe",
+      ["*"] = "clip.exe",
+    },
+    paste = {
+      ["+"] = 'pwsh.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ["*"] = 'pwsh.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
+end
 
 -- 自定义的 lazy.nvim 安装路径
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -47,6 +63,7 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
+require "autocmds"
 require "nvchad.autocmds"
 
 vim.schedule(function()

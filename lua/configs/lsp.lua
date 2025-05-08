@@ -109,7 +109,16 @@ local servers = {
   shfmt = {},
 
   -- Lua
-  lua_ls = {},
+  lua_ls = {
+    settings = {
+      Lua = {
+        completion = {
+          callSnippet = "Replace",
+        },
+        diagnostics = { disable = { "missing-fields" } },
+      },
+    },
+  },
   stylua = {},
 
   -- Markdown

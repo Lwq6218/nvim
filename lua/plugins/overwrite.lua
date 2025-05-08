@@ -68,15 +68,6 @@ return {
     end,
   },
 
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ui = {
-        border = "rounded",
-      },
-    },
-  },
-
   { import = "nvchad.blink.lazyspec" },
 
   {
@@ -87,36 +78,35 @@ return {
         ["<C-j>"] = { "select_next", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
       },
-
       cmdline = {
-        completion = {
-          menu = {
-            auto_show = function(ctx)
-              return vim.fn.getcmdtype() == ":"
-              -- enable for inputs as well, with:
-              -- or vim.fn.getcmdtype() == '@'
-            end,
-          },
-        },
+        -- completion = {
+        --   menu = {
+        --     auto_show = function(ctx)
+        --       return vim.fn.getcmdtype() == ":"
+        --       -- enable for inputs as well, with:
+        --       -- or vim.fn.getcmdtype() == '@'
+        --     end,
+        --   },
+        -- },
         keymap = {
-          ["<CR>"] = { "select_and_accept", "fallback" },
+          ["<CR>"] = { "accept", "fallback" },
           ["<C-j>"] = { "select_next", "fallback" },
           ["<C-k>"] = { "select_prev", "fallback" },
         },
       },
 
       sources = {
-        providers = {
-          cmdline = {
-            min_keyword_length = function(ctx)
-              -- when typing a command, only show when the keyword is 3 characters or longer
-              if ctx.mode == "cmdline" and string.find(ctx.line, " ") == nil then
-                return 3
-              end
-              return 0
-            end,
-          },
-        },
+        -- providers = {
+        --   cmdline = {
+        --     min_keyword_length = function(ctx)
+        --       -- when typing a command, only show when the keyword is 3 characters or longer
+        --       if ctx.mode == "cmdline" and string.find(ctx.line, " ") == nil then
+        --         return 3
+        --       end
+        --       return 0
+        --     end,
+        --   },
+        -- },
       },
     },
   },

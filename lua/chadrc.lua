@@ -37,14 +37,14 @@ M.nvdash = {
   },
 
   buttons = {
-    { txt = "  Find File", keys = "f", cmd = "Telescope find_files" },
-    { txt = "  Recent Files", keys = "o", cmd = "Telescope oldfiles" },
-    { txt = "  Find Text", keys = "g", cmd = "Telescope live_grep" },
+    { txt = "  Find File", keys = "f", cmd = ":Telescope find_files" },
+    { txt = "  Recent Files", keys = "o", cmd = ":Telescope oldfiles" },
+    { txt = "  Find Text", keys = "g", cmd = ":Telescope live_grep" },
     { txt = "  Config", keys = "c", cmd = " :cd ~/.config/nvim | e $MYVIMRC" },
     { txt = "  Mappings", keys = "m", cmd = "NvCheatsheet" },
     { txt = "󱥚  Themes", keys = "t", cmd = ":lua require('nvchad.themes').open()" },
-    { txt = "󰒲  Lazy", keys = "l", cmd = "Lazy" },
-    { txt = "  Quit", keys = "q", cmd = "qa" },
+    { txt = "󰒲  Lazy", keys = "l", cmd = ":Lazy" },
+    { txt = "  Quit", keys = "q", cmd = ":qa" },
     { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
     {
       txt = function()
@@ -111,7 +111,7 @@ M.ui = {
   },
 
   tabufline = {
-    enabled = true,
+    enabled = false,
     lazyload = true,
   },
 }

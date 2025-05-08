@@ -2,7 +2,7 @@ return {
 
   {
     "folke/noice.nvim",
-    enabled = true,
+    enabled = false,
     keys = { ":", "/", "?" }, -- lazy load cmp on more keys along with insert mode
     opts = require("configs.ui").noice,
     dependencies = {
