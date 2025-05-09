@@ -201,7 +201,7 @@ return {
 
   {
     "Bekaboo/dropbar.nvim",
-    enabled = true,
+    enabled = false,
     event = { "LspAttach" },
     config = function()
       require("dropbar").setup {

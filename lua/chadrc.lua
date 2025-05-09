@@ -6,7 +6,7 @@ M.base46 = {
   theme = "catppuccin",
   theme_toggle = { "catppuccin", "github_light" },
   transparency = false,
-  integrations = { "trouble", "flash" },
+  integrations = { "trouble", "flash", "navic" },
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },
@@ -124,6 +124,7 @@ M.colorify = {
 }
 
 M.cheatsheet = {
+  enabled = false,
   theme = "grid", -- simple/grid
   excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
 }
@@ -142,9 +143,8 @@ M.term = {
   },
 }
 M.lsp = {
-  signature = true,
+  signature = false,
 }
-
 M.mason = {
   -- Use names from mason.nvim
   -- For example, if you want to install "tsserver" you should use "typescript-language-server" in the list below
@@ -185,4 +185,5 @@ M.mason = {
   },
   skip = {},
 }
+
 return M

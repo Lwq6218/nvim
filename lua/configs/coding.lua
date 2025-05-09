@@ -2,7 +2,7 @@ local M = {}
 
 M.lint = {
   linters = {
-    -- -- Example of using selene only when a selene.toml file is present
+    -- -- Example of uing selene only when a selene.toml file is present
     -- selene = {
     --   -- `condition` is another LazyVim extension that allows you to
     --   -- dynamically enable/disable linters based on the context.
@@ -63,5 +63,4 @@ M.falsh = {
     prefix = { { "", "FlashPromptIcon" } },
   },
 }
-
 return M

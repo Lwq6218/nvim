@@ -131,7 +131,6 @@ return {
   },
   {
     "folke/flash.nvim",
-    event = "VeryLazy",
     opts = require("configs.coding").falsh,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "flash")

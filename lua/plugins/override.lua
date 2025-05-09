@@ -1,4 +1,4 @@
--- overwrite nvchad plugins
+-- override nvchad plugins
 return {
   --disable nvchad plugins
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
@@ -9,6 +9,12 @@ return {
       preset = "helix",
       win = {
         border = "rounded",
+      },
+      spec = {
+        {
+          mode = { "n" },
+          { "<leader>f", group = "file/find" },
+        },
       },
     },
   },
@@ -68,6 +74,23 @@ return {
   },
 
   -- Change nvchad plugins
+  -- init.lua:
+  {
+    {
+      "nvim-telescope/telescope.nvim",
+      dependencies = { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      opts = function(_, opts)
+        opts.extensions.fzf = {
+          fuzzy = true, -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true, -- override the file sorter
+          case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        }
+        require("telescope").load_extension "fzf"
+      end,
+    },
+  },
+
   {
     "mason-org/mason.nvim",
     opts = {
