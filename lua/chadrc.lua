@@ -42,7 +42,7 @@ M.nvdash = {
     {
       txt = "  Config",
       keys = "c",
-      cmd = ":lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath 'config' })",
+      cmd = ": cd ~/.config/nvim | lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath 'config' })",
     },
     { txt = "  Mappings", keys = "m", cmd = "NvCheatsheet" },
     { txt = "󱥚  Themes", keys = "t", cmd = ":lua require('nvchad.themes').open()" },
