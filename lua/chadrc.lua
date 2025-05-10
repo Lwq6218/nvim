@@ -3,9 +3,9 @@
 -- Please read that file to know all available options :(
 local M = {}
 M.base46 = {
-  theme = "catppuccin",
-  theme_toggle = { "catppuccin", "github_light" },
-  transparency = false,
+  theme = "rosepine",
+  theme_toggle = { "rosepine", "github_light" },
+  transparency = true,
   integrations = { "trouble", "flash", "navic" },
   hl_override = {
     Comment = { italic = true },
@@ -32,15 +32,18 @@ M.nvdash = {
     "   ▀██ █████▄▀█▀▄██████▄    ",
     "     ▀ ▀▀▀▀▀▀▀ ▀▀▀▀▀▀▀▀▀▀   ",
     "                            ",
-    "     Powered By  eovim    ",
+    "     Powered By  nvchad    ",
     "                            ",
   },
-
   buttons = {
-    { txt = "  Find File", keys = "f", cmd = ":Telescope find_files" },
-    { txt = "  Recent Files", keys = "o", cmd = ":Telescope oldfiles" },
+    { txt = "  Search File", keys = "f", cmd = ":Telescope find_files" },
+    { txt = "  Recent Files", keys = "r", cmd = ":Telescope oldfiles" },
     { txt = "  Find Text", keys = "g", cmd = ":Telescope live_grep" },
-    { txt = "  Config", keys = "c", cmd = " :cd ~/.config/nvim | e $MYVIMRC" },
+    {
+      txt = "  Config",
+      keys = "c",
+      cmd = ":lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath 'config' })",
+    },
     { txt = "  Mappings", keys = "m", cmd = "NvCheatsheet" },
     { txt = "󱥚  Themes", keys = "t", cmd = ":lua require('nvchad.themes').open()" },
     { txt = "󰒲  Lazy", keys = "l", cmd = ":Lazy" },
@@ -72,6 +75,7 @@ M.ui = {
   },
 
   statusline = {
+    enabled = false,
     theme = "default", -- default/vscode/vscode_colored/minimal
     separator_style = "block",
     -- default/round/block/arrow separators work only for default statusline theme

@@ -1,6 +1,7 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
 -- Neovide
 if vim.g.neovide then
   vim.opt.guifont = "Maple Mono NF CN:h10.5"
@@ -14,7 +15,7 @@ if vim.g.neovide then
   vim.g.neovide_padding_left = 0
   vim.g.neovide_hide_mouse_when_typing = true
 end
---
+
 -- Wsl clipboard
 if vim.fn.has "wsl" == 1 then
   vim.g.clipboard = {
@@ -30,7 +31,6 @@ if vim.fn.has "wsl" == 1 then
     cache_enabled = 0,
   }
 end
-
 -- 自定义的 lazy.nvim 安装路径
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 

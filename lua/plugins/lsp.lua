@@ -20,6 +20,7 @@ return {
   },
   {
     "SmiteshP/nvim-navic",
+    enabled = false,
     event = "LspAttach",
     config = function()
       dofile(vim.g.base46_cache .. "navic")

@@ -116,6 +116,9 @@ local servers = {
           callSnippet = "Replace",
         },
         diagnostics = { disable = { "missing-fields" } },
+        hint = {
+          enable = true,
+        },
       },
     },
   },
@@ -140,6 +143,9 @@ local custom_on_attach = function(client, buf)
     vim.keymap.set(mode, keys, func, { buffer = buf, desc = "LSP: " .. desc })
   end
 
+  map("K", function()
+    vim.lsp.buf.hover { border = "rounded" }
+  end, "LSP show details")
   -- Rename the variable under your cursor.
   --  Most Language Servers support renaming across files, etc.
   map("grn", require "nvchad.lsp.renamer", "Rename")

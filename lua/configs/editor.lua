@@ -24,11 +24,12 @@ M.yazi = {
     change_working_directory = "<c-\\>",
   },
 }
+
 M.snacks = {
   notifier = { enabled = true, reflesh = 120, margin = { top = 5, right = 2, bottom = 0 } },
   bigfile = { enabled = true },
   quickfile = { enabled = true },
-  indent = { enabled = true },
+  indent = { enabled = true, indent = { char = " ", only_scope = true, only_current = true } },
   input = { enabled = true },
   win = { enabled = false },
   words = { enabled = false },

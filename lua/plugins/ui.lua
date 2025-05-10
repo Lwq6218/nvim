@@ -10,11 +10,4 @@ return {
       "MunifTanjim/nui.nvim",
     },
   },
-
-  {
-    "typicode/bg.nvim",
-    lazy = false,
-    enabled = true,
-    cond = not vim.g.neovide,
-  },
 }

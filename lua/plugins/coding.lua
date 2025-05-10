@@ -87,7 +87,7 @@ return {
 
   {
     "echasnovski/mini.ai",
-    event = "VeryLazy",
+    event = "User FilePost",
     version = false,
     opts = function()
       local ai = require "mini.ai"

@@ -93,3 +93,13 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = true
   end,
 })
+
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   pattern = "*",
+--   command = "silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=0",
+-- })
+--
+-- vim.api.nvim_create_autocmd("VimLeave", {
+--   pattern = "*",
+--   command = "silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=10",
+-- })

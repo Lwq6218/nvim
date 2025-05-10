@@ -112,7 +112,7 @@ return {
       require("incline").setup {
         window = {
           margin = {
-            horizontal = 2,
+            horizontal = 3,
             vertical = 2,
           },
           options = {
@@ -201,7 +201,7 @@ return {
 
   {
     "Bekaboo/dropbar.nvim",
-    enabled = false,
+    enabled = true,
     event = { "LspAttach" },
     config = function()
       require("dropbar").setup {
@@ -225,6 +225,7 @@ return {
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
+    enabled = false,
     opts = {
       menu = {
         width = vim.api.nvim_win_get_width(0) - 4,
