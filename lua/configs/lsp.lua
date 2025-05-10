@@ -232,4 +232,12 @@ for name, opts in pairs(servers) do
   vim.lsp.config(name, vim.tbl_deep_extend("force", {}, default_lspconfig_setup_options, opts or {})) -- nvim v0.11.0 or above required
 end
 
-require("nvchad.lsp").diagnostic_config()
+-- require("nvchad.lsp").diagnostic_config()
+local x = vim.diagnostic.severity
+vim.diagnostic.config {
+  virtual_text = { prefix = "" },
+  virtual_lines = true,
+  signs = { text = { [x.ERROR] = "󰅙", [x.WARN] = "", [x.INFO] = "󰋼", [x.HINT] = "󰌵" } },
+  underline = true,
+  float = { border = "single" },
+}
