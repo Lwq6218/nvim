@@ -29,13 +29,24 @@ M.snacks = {
   notifier = { enabled = true, reflesh = 120, margin = { top = 5, right = 2, bottom = 0 } },
   bigfile = { enabled = true },
   quickfile = { enabled = true },
-  indent = { enabled = true, indent = { char = " ", only_scope = true, only_current = true } },
+  indent = {
+    enabled = true,
+    indent = { char = " ", only_scope = true, only_current = true },
+    filter = function(buf)
+      local exclude = { "help" }
+      return vim.g.snacks_indent ~= false
+        and vim.b[buf].snacks_indent ~= false
+        and vim.bo[buf].buftype == ""
+        and not vim.tbl_contains(exclude, vim.bo[buf].filetype)
+    end,
+  },
   input = { enabled = true },
-  win = { enabled = false },
+  picker = { enabled = true },
+  toggle = { enabled = true },
+  win = { enabled = true },
   words = { enabled = false },
   dashboard = { enabled = false },
   explorer = { enabled = false },
-  picker = { enabled = false },
   scope = { enabled = false },
   scroll = { enabled = false },
   statuscolumn = { enabled = false },
